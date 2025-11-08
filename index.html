@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>omikujital | kotowaza pulls</title>
+    <meta
+      name="description"
+      content="Pull a daily kotowaza, learn its literal meaning, and keep the wisdom you love."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600&family=Noto+Serif+JP:wght@400;600&family=Pixelify+Sans:wght@500;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%0A%20%20%3Crect%20x%3D%2710%27%20y%3D%276%27%20width%3D%2744%27%20height%3D%2752%27%20rx%3D%276%27%20fill%3D%27%23FAF8F4%27%20stroke%3D%27%23B9382E%27%20stroke-width%3D%273%27%2F%3E%0A%20%20%3Crect%20x%3D%2710%27%20y%3D%276%27%20width%3D%2744%27%20height%3D%2712%27%20rx%3D%274%27%20fill%3D%27%23B9382E%27%2F%3E%0A%20%20%3Cpath%20d%3D%27M22%2024h20M22%2032h20M22%2040h20M22%2048h20%27%20stroke%3D%27%23B9382E%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%2F%3E%0A%20%20%3Ctext%20x%3D%2732%27%20y%3D%2743%27%20font-size%3D%2710%27%20text-anchor%3D%27middle%27%20fill%3D%27%233C2A1E%27%20font-family%3D%27%22Noto%20Sans%20JP%22%2C%20sans-serif%27%3E%E3%81%8A%E3%81%BF%E3%81%8F%E3%81%98%3C%2Ftext%3E%0A%3C%2Fsvg%3E"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <h1 class="pixel-title" role="button" tabindex="0" aria-label="Return to sealed card">omikujital 🔖</h1>
+        <p class="subhead">Some wisdoms can fit in our pocket</p>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="./index.html#daily" id="refreshDaily" class="nav-link is-active">Reset</a>
+        <a href="./favorites.html" class="nav-link">Favorites</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="deck-stage" id="daily">
+        <div class="deck-frame">
+          <p class="deck-script" aria-hidden="true">おみくじ</p>
+          <article class="spread is-closed" aria-live="polite">
+            <div class="paper-cover" id="paperCover" role="button" tabindex="0" aria-label="Tap to pull today&apos;s card">
+              <time id="cardDate" class="cover-date" aria-label="Card date"></time>
+              <div class="cover-seal" aria-hidden="true">
+                <span class="seal-glyph">吉</span>
+              </div>
+              <p class="cover-title">オミクジタル・Omikujital 🎴</p>
+              <p class="cover-note">Tap here for some wisdom</p>
+            </div>
+            <div class="spread-body">
+              <div class="kanji-stack">
+                <p class="kanji" id="kanji">…</p>
+                <p class="kana" id="kana"></p>
+                <p class="romaji" id="romaji"></p>
+              </div>
+
+              <section class="translation-block">
+                <h2>What it means</h2>
+                <p class="translation" id="translation"></p>
+                <div class="translation-footnotes">
+                  <p class="original" id="original" data-label="Literal meaning"></p>
+                </div>
+              </section>
+            </div>
+
+            <div class="spread-meta">
+              <div class="actions">
+                <button id="newAffirmation">Open paper</button>
+                <button id="favorite" class="ghost heart-button" aria-pressed="false" aria-label="Save this card">
+                  <span class="icon-heart" aria-hidden="true"></span>
+                  Save
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="deck-instructions">
+          <details class="deck-panel" open>
+            <summary>What is this?</summary>
+            <p>Omikujital is a digital take on omikuji, the Japanese fortune slips. But instead of predicting your luck, it draws a random Japanese proverb for you.</p>
+            <p>It’s a small daily ritual to pause, and reflect.</p>
+            <p>Japanese proverbs (kotowaza) are short, poetic, and sincere. They carry centuries of wisdom in just a few words—like quiet advice from a friend who has seen it all.</p>
+          </details>
+          <details class="deck-panel">
+            <summary>How it works 📝</summary>
+            <ol>
+              <li>Tap the card to reveal today’s kotowaza.</li>
+              <li>Sit with it for a moment — whether it comforts or confuses you.</li>
+              <li>Save it if it speaks to you. Tap “Next” if you’re in the mood for another.</li>
+            </ol>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <footer class="site-footer">
+      <p>rismajw · 2025</p>
+      <p>Built for fun, fueled by curiosity 🍣</p>
+      <div class="social-links" aria-label="Social links">
+        <a href="#" class="social-link">GitHub</a>
+        <a href="#" class="social-link">Instagram</a>
+      </div>
+    </footer>
+
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>

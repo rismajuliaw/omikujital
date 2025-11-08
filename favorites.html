@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>omikujital | favorites</title>
+    <meta name="description" content="Keep the kotowaza that spoke to you today." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600&family=Noto+Serif+JP:wght@400;600&family=Pixelify+Sans:wght@500;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%0A%20%20%3Crect%20x%3D%2710%27%20y%3D%276%27%20width%3D%2744%27%20height%3D%2752%27%20rx%3D%276%27%20fill%3D%27%23FAF8F4%27%20stroke%3D%27%23B9382E%27%20stroke-width%3D%273%27%2F%3E%0A%20%20%3Crect%20x%3D%2710%27%20y%3D%276%27%20width%3D%2744%27%20height%3D%2712%27%20rx%3D%274%27%20fill%3D%27%23B9382E%27%2F%3E%0A%20%20%3Cpath%20d%3D%27M22%2024h20M22%2032h20M22%2040h20M22%2048h20%27%20stroke%3D%27%23B9382E%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%2F%3E%0A%20%20%3Ctext%20x%3D%2732%27%20y%3D%2743%27%20font-size%3D%2710%27%20text-anchor%3D%27middle%27%20fill%3D%27%233C2A1E%27%20font-family%3D%27%22Noto%20Sans%20JP%22%2C%20sans-serif%27%3E%E3%81%8A%E3%81%BF%E3%81%8F%E3%81%98%3C%2Ftext%3E%0A%3C%2Fsvg%3E"
+    />
+  </head>
+  <body class="favorites-page">
+    <header class="site-header">
+      <div class="brand">
+        <h1 class="pixel-title">omikujital</h1>
+        <p class="subhead">To remind you that some wisdom can fit in your pocket</p>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="./index.html#daily" class="nav-link">Back</a>
+        <a href="./favorites.html" class="nav-link is-active">Favorites</a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <div class="panel-block">
+          <h2>Your Favs</h2>
+          <p>Keep up to five kotowaza. A smaller pocket makes every slip feel special.</p>
+        </div>
+        <div class="panel-block">
+          <div id="favoritesEmpty" class="empty-state" role="status">
+            Nothing saved yet. Draw a card and tap the heart.
+          </div>
+          <ul id="favoritesGrid" class="favorites-grid" aria-live="polite"></ul>
+        </div>
+      </section>
+    </main>
+
+    <template id="favoriteRow">
+      <li>
+        <p class="kanji favorite-kanji"></p>
+        <p class="kana favorite-kana"></p>
+        <p class="romaji favorite-romaji"></p>
+        <p class="favorite-literal" data-label="Literal meaning"></p>
+        <p class="favorite-note" data-label="What it means"></p>
+        <div class="card-actions">
+          <button class="ghost remove" type="button">Remove</button>
+          <button class="ghost copy" type="button">Copy</button>
+        </div>
+      </li>
+    </template>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <footer class="site-footer">
+      <p>rismajw · 2025</p>
+      <p>Built for fun, fueled by curiosity 🍣</p>
+    </footer>
+    <script src="./favorites.js" type="module"></script>
+  </body>
+</html>
