@@ -1,6 +1,7 @@
 :root {
   color-scheme: light;
   --bg: #ffffff;
+  --bg-secondary: #fffaf3;
   --paper: #faf8f4;
   --paper-warm: #f5e7d0;
   --ink: #3c2a1e;
@@ -11,6 +12,8 @@
   --paper-line: rgba(60, 42, 30, 0.08);
   --ribbon: #b9382e;
   --ribbon-dark: #7a1f18;
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 * {
@@ -27,11 +30,12 @@ body {
   font-family: "Space Grotesk", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--ink);
-  padding: 2.5rem clamp(1rem, 4vw, 4rem) 4rem;
+  padding: calc(2.5rem + var(--safe-area-top)) clamp(1rem, 4vw, 4rem) calc(4rem + var(--safe-area-bottom));
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  overflow-x: hidden;
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpolygon points='12,2 14.9,8.3 22,9.3 16.8,14.1 18.2,21 12,17.7 5.8,21 7.2,14.1 2,9.3 9.1,8.3' fill='%232a5f4a'/%3E%3C/svg%3E") 6 2, default;
 }
 
@@ -369,13 +373,17 @@ main {
   .deck-script {
     writing-mode: horizontal-tb;
     letter-spacing: 0.2em;
+    text-align: center;
   }
 
   .spread-body {
     flex-direction: column;
+    padding-top: 2.4rem;
   }
 
   .kanji-stack {
+    flex: 1 1 auto;
+    width: 100%;
     border-right: none;
     border-bottom: 1px solid rgba(27, 27, 31, 0.12);
     padding-right: 0;
@@ -384,6 +392,9 @@ main {
 
   .translation-block {
     padding-left: 0;
+    padding-top: 1rem;
+    border-left: none;
+    border-top: 1px solid rgba(27, 27, 31, 0.12);
   }
 }
 
@@ -909,7 +920,7 @@ button:hover,
 .toast {
   position: fixed;
   left: 50%;
-  bottom: 2rem;
+  bottom: calc(2rem + var(--safe-area-bottom));
   transform: translate(-50%, 20px);
   background: rgba(60, 42, 30, 0.9);
   color: white;
@@ -996,6 +1007,11 @@ button:hover,
   border-right: 2px solid var(--ink);
   border-bottom: 2px solid var(--ink);
   transform: rotate(-45deg);
+}
+
+.inline-cta .cta-heart {
+  font-size: 1rem;
+  color: var(--accent);
 }
 
 .panel-block:last-child {
@@ -1265,7 +1281,7 @@ button:hover,
 
 @media (max-width: 980px) {
   body {
-    padding: 2rem 1.25rem 3rem;
+    padding: calc(2rem + var(--safe-area-top)) 1.25rem calc(3rem + var(--safe-area-bottom));
   }
 
   .layout.news-grid {
@@ -1274,6 +1290,90 @@ button:hover,
 
   .spread {
     min-height: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .site-nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .deck-stage {
+    gap: 1.25rem;
+  }
+
+  .deck-frame,
+  .deck-instructions {
+    width: 100%;
+  }
+
+  .deck-instructions {
+    padding: 1.1rem 1.25rem;
+  }
+
+  .deck-panel {
+    padding: 1rem;
+  }
+
+  .deck-panel::after {
+    display: none;
+  }
+
+  .deck-script {
+    letter-spacing: 0.14em;
+  }
+
+  .paper-cover {
+    padding: 2.2rem 1.5rem 1.5rem;
+  }
+
+  .cover-date {
+    left: 16px;
+  }
+
+  .cover-seal {
+    width: 48px;
+    height: 48px;
+    top: 12px;
+    right: 16px;
+  }
+
+  .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .favorites-grid li {
+    padding: 1rem 1.1rem 1rem 1.5rem;
+  }
+
+  .favorites-grid .card-actions {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .favorites-grid button {
+    flex: 1 1 48%;
   }
 }
 
@@ -1311,9 +1411,31 @@ button:hover,
     line-height: 1.45;
   }
 }
-.inline-cta .cta-heart {
-  font-size: 1rem;
-  color: var(--accent);
+
+@media (max-width: 420px) {
+  .actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  button,
+  .button {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .favorites-grid .card-actions {
+    flex-direction: column;
+  }
+
+  .favorites-grid button {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .site-nav {
+    grid-template-columns: 1fr;
+  }
 }
 
 .panel-entry {

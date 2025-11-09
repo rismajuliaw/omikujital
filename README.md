@@ -17,6 +17,15 @@ Shrines hand out paper omikuji: you shake a box, draw a numbered stick, and rece
 - Copy/share helpers plus gentle toasts for feedback.
 - Works offline after the first load because everything lives in `data/idioms.json`.
 
+## Glimpses
+![Daily card pull on desktop](assets/asset_readme_1.png)
+
+![Favorites pocket on mobile](assets/asset_readme_2.png)
+
+<video src="assets/asset_readme_3.mov" controls width="480">
+  Your browser doesn’t support inline playback. <a href="assets/asset_readme_3.mov">Download the clip</a>.
+</video>
+
 ## Running Locally
 1. Clone the repo and enter the folder:
    ```bash
