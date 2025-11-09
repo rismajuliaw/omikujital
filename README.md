@@ -18,6 +18,8 @@ Shrines hand out paper omikuji: you shake a box, draw a numbered stick, and rece
 - Works offline after the first load because everything lives in `data/idioms.json`.
 
 ## Glimpses
+![Animated flow of Omikujital draw](assets/omikujital_gif.gif)
+
 ![Daily card pull on desktop](assets/asset_readme_1.png)
 
 ![Favorites pocket on mobile](assets/asset_readme_2.png)
